@@ -16,16 +16,10 @@
   </head>
   <body>
     <header>
-      <div class="header__fixed-logo flex">
-        <a href="">
-          <h1><span id="bobs">Bob's</span><br /><span id="bagels">Bagels</span></h1>
-        </a>
-      </div>
-
       <div class="header__inner container">
-        <div class="header__nav flex">
+        <div class="header__nav flex-sb-e">
           <div class="header__logo">
-            <a href="">
+            <a href="index.html">
               <img
                 class="header__logo-img"
                 src="./assets/images/bagel.png"
@@ -33,29 +27,73 @@
                 width="60px"
               />
             </a>
+            <div class="header__fixed-logo flex-sb-c">
+              <a href="index.html">
+                <h1><span id="bobs">Bob's</span><br /><span id="bagels">Bagels</span></h1>
+              </a>
+            </div>
           </div>
-          <ul class="header__list flex">
+
+          <ul class="header__list flex-sb-c">
             <li class="header__item"><a href="index.html">Home</a></li>
             <li class="header__item"><a href="">About</a></li>
-            <li class="header__item"><a href="shop.html">Shop</a></li>
+            <li class="header__item" id="current__page-nav">
+              <a href="shop.html" id="current__page-nav-text">Shop</a>
+            </li>
             <li class="header__item"><a href="">Contact</a></li>
             <li class="header__item"><a href="">Sign In</a></li>
             <li class="header__item"><a href="">Sign Up</a></li>
-            <li class="header__item">
-              <a href="">
-                <svg viewbox="0 0 24 24" width="23" height="23">
-                  <path
-                    d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077ZM21.4,6.178l-.786,4.354A3,3,0,0,1,17.657,13H5.419L4.478,5H20.41A1,1,0,0,1,21.4,6.178Z"
-                  />
-                  <circle cx="7" cy="22" r="2" />
-                  <circle cx="17" cy="22" r="2" />
-                </svg>
-              </a>
+            <li class="header__item" onclick="(basket.getBasketTotal(),basket.getReceipt())">
+              <svg viewbox="0 0 24 24" width="23" height="23">
+                <path
+                  d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077ZM21.4,6.178l-.786,4.354A3,3,0,0,1,17.657,13H5.419L4.478,5H20.41A1,1,0,0,1,21.4,6.178Z"
+                />
+                <circle cx="7" cy="22" r="2" />
+                <circle cx="17" cy="22" r="2" />
+              </svg>
             </li>
           </ul>
         </div>
       </div>
     </header>
+    <main class="shop">
+      <section class="shop__inner container">
+        <div class="shop__products">
+          <!-- <div class="shop__product">
+            <div class="shop__product-image">
+              <div class="shop__add-to-basket flex-c-c" onclick="(basket.addToBasket('BGLO'))">
+                <p>ADD TO CART</p>
+                <svg viewbox="0 0 24 24" width="100" height="100">
+                  <g id="_01_align_center" data-name="01 align center">
+                    <path
+                      d="M20.164,13H5.419L4.478,5H14V3H4.242L4.2,2.648A3,3,0,0,0,1.222,0H0V2H1.222a1,1,0,0,1,.993.883L3.8,16.351A3,3,0,0,0,6.778,19H20V17H6.778a1,1,0,0,1-.993-.884L5.654,15H21.836l.9-5H20.705Z"
+                    />
+                    <circle cx="7" cy="22" r="2" />
+                    <circle cx="17" cy="22" r="2" />
+                    <polygon
+                      points="21 3 21 0 19 0 19 3 16 3 16 5 19 5 19 8 21 8 21 5 24 5 24 3 21 3"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <img src="./assets/images/bagel1.jpg" alt="Onion Bagel" />
+            </div>
+            <div class="shop__product-text flex-sb">
+              <div class="shop__product-name">
+                <p>Onion Bagel</p>
+                <p><span class="shop__text-sm">Cream Cheese, Smoked Salmon</span></p>
+              </div>
+              <div class="shop__product-price">
+                <p><span class="shop__text-sm">$4.99</span></p>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </section>
+    </main>
+    <script src="./scripts/inventory.js"></script>
     <script src="./scripts/menu.js"></script>
+    <script src="./scripts/basket.js"></script>
+    <script src="./scripts/cart.js"></script>
   </body>
 </html>

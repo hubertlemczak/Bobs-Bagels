@@ -44,34 +44,65 @@ h6 {
 
 /*  */
 
+:root {
+  --clr-primary: rgb(105, 205, 255);
+  --clr-accent-orange: rgb(250, 188, 0);
+}
+
+body {
+  height: 200vh;
+}
+
 .container {
   margin: 0 auto;
   max-width: 66rem;
+  padding-inline: 10px;
 }
 
-.flex {
+.flex-sb {
   display: flex;
   justify-content: space-between;
+}
+
+.flex-sb-c {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-sb-e {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.flex-c-c {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 header {
   position: fixed;
   width: 100%;
-  background-color: rgb(242, 124, 116);
-  padding-block: 10px;
+  background-color: var(--clr-primary);
+  padding: 10px;
+  z-index: 2;
+}
+.header__logo {
+  position: relative;
 }
 
 .header__fixed-logo {
   justify-content: center;
   position: absolute;
-  right: 250px;
-  top: 40px;
+  left: 50px;
+  top: 20px;
   border-radius: 50%;
   background-color: black;
   width: 160px;
   height: 160px;
-  transform: rotate(15deg);
+  transform: rotate(-15deg);
 }
 
 h1 {
@@ -79,7 +110,7 @@ h1 {
 }
 
 #bobs {
-  color: rgb(242, 124, 116);
+  color: var(--clr-accent-orange);
   font-family: 'Pacifico', cursive;
   font-size: 2.4rem;
 }
@@ -90,17 +121,75 @@ h1 {
   font-size: 1.5rem;
 }
 
-/* .header__nav {
-} */
-
 .header__list {
   list-style: none;
-  gap: 40px;
+  z-index: 1;
+  gap: clamp(0px, -40px + 6vw, 30px);
+}
+
+.header__item:nth-last-child(1) {
+  margin-left: 70px;
 }
 
 .header__item a {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 400;
   color: black;
   text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header__item {
+  padding-inline: 10px;
+}
+#current__page-nav {
+  background-color: black;
+}
+#current__page-nav-text {
+  color: var(--clr-accent-orange);
+}
+
+.shop {
+  padding-top: 200px;
+}
+
+.shop__products {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.shop__product {
+  max-width: 300px;
+}
+
+.shop__product-image {
+  position: relative;
+}
+
+.shop__add-to-basket {
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 2rem;
+  opacity: 0;
+  background-color: var(--clr-accent-orange);
+  transition: opacity 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.shop__add-to-basket:hover {
+  opacity: 0.8;
+}
+
+.shop__product-text {
+  align-items: flex-end;
+  padding-top: 10px;
+  line-height: 0.7;
+  font-size: 1.7rem;
+}
+
+.shop__text-sm {
+  font-size: 1rem;
 }

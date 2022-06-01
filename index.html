@@ -16,14 +16,8 @@
   </head>
   <body>
     <header>
-      <div class="header__fixed-logo flex">
-        <a href="index.html">
-          <h1><span id="bobs">Bob's</span><br /><span id="bagels">Bagels</span></h1>
-        </a>
-      </div>
-
       <div class="header__inner container">
-        <div class="header__nav flex">
+        <div class="header__nav flex-sb-e">
           <div class="header__logo">
             <a href="index.html">
               <img
@@ -33,9 +27,17 @@
                 width="60px"
               />
             </a>
+            <div class="header__fixed-logo flex-sb-c">
+              <a href="index.html">
+                <h1><span id="bobs">Bob's</span><br /><span id="bagels">Bagels</span></h1>
+              </a>
+            </div>
           </div>
-          <ul class="header__list flex">
-            <li class="header__item"><a href="index.html">Home</a></li>
+
+          <ul class="header__list flex-sb-c">
+            <li class="header__item" id="current__page-nav">
+              <a href="index.html" id="current__page-nav-text">Home</a>
+            </li>
             <li class="header__item"><a href="">About</a></li>
             <li class="header__item"><a href="shop.html">Shop</a></li>
             <li class="header__item"><a href="">Contact</a></li>
@@ -56,6 +58,9 @@
         </div>
       </div>
     </header>
+    <script src="./scripts/inventory.js"></script>
     <script src="./scripts/menu.js"></script>
+    <script src="./scripts/basket.js"></script>
+    <script src="./scripts/cart.js"></script>
   </body>
 </html>
