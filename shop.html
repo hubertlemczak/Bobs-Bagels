@@ -37,63 +37,272 @@
           <ul class="header__list flex-sb-c">
             <li class="header__item"><a href="index.html">Home</a></li>
             <li class="header__item"><a href="">About</a></li>
-            <li class="header__item" id="current__page-nav">
-              <a href="shop.html" id="current__page-nav-text">Shop</a>
+            <li class="header__item current__page-nav">
+              <a href="shop.html" class="current__page-nav-text">Shop</a>
             </li>
             <li class="header__item"><a href="">Contact</a></li>
-            <li class="header__item"><a href="">Sign In</a></li>
-            <li class="header__item"><a href="">Sign Up</a></li>
-            <li class="header__item" onclick="(basket.getBasketTotal(),basket.getReceipt())">
-              <svg viewbox="0 0 24 24" width="23" height="23">
-                <path
-                  d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077ZM21.4,6.178l-.786,4.354A3,3,0,0,1,17.657,13H5.419L4.478,5H20.41A1,1,0,0,1,21.4,6.178Z"
-                />
-                <circle cx="7" cy="22" r="2" />
-                <circle cx="17" cy="22" r="2" />
-              </svg>
+            <li class="header__item">
+              <div
+                class="header__basket"
+                onclick="document.querySelector('.basket').classList.add('top')"
+              >
+                <svg viewbox="0 0 24 24" width="23" height="23">
+                  <path
+                    d="M22.713,4.077A2.993,2.993,0,0,0,20.41,3H4.242L4.2,2.649A3,3,0,0,0,1.222,0H1A1,1,0,0,0,1,2h.222a1,1,0,0,1,.993.883l1.376,11.7A5,5,0,0,0,8.557,19H19a1,1,0,0,0,0-2H8.557a3,3,0,0,1-2.82-2h11.92a5,5,0,0,0,4.921-4.113l.785-4.354A2.994,2.994,0,0,0,22.713,4.077ZM21.4,6.178l-.786,4.354A3,3,0,0,1,17.657,13H5.419L4.478,5H20.41A1,1,0,0,1,21.4,6.178Z"
+                  />
+                  <circle cx="7" cy="22" r="2" />
+                  <circle cx="17" cy="22" r="2" />
+                </svg>
+              </div>
+              <aside class="basket">
+                <section class="basket-section">
+                  <div
+                    class="close-btn"
+                    onclick="document.querySelector('.basket').classList.remove('top')"
+                  >
+                    x
+                  </div>
+                  <div class="basket__inner">
+                    <div class="basket__products">
+                      <!-- <div class="basket__product">
+                        <div class="basket__product-image">
+                          <img
+                            width="100px"
+                            src="./assets/images/${product.sku}.jpg"
+                            alt="${product.variant} ${
+                      product.name
+                    }"
+                          />
+                        </div>
+                        <div class="basket__text flex-sb-c">
+                          <div class="basket__product-name">
+                            <p>${product.variant} ${product.name}</p>
+                          </div>
+                          <div class="basket__wrapper flex-sb-c">
+                            <div class="basket__product-quantity flex-sb-c">
+                              <div
+                                class="basket__product-quantity-decrement"
+                                onclick="basket.decrement('${
+                                product.sku
+                              }')"
+                              >
+                                <p>-</p>
+                              </div>
+                              <p><span class="basket__text-sm">${product.quantity}</span></p>
+                              <div
+                                class="basket__product-quantity-increment"
+                                onclick="basket.addToBasket('${
+                                product.sku
+                              }')"
+                              >
+                                <p>+</p>
+                              </div>
+                            </div>
+                            <div class="basket__product-total">
+                              <p>
+                                <span class="basket__text-sm"
+                                  >£${product.totalPrice.toFixed(2)}</span
+                                >
+                              </p>
+                            </div>
+                            <div
+                              class="basket__product-remove"
+                              onclick="basket.removeFromBasket('${
+                              product.sku
+                            }')"
+                            >
+                              <p>X</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                    <div class="basket__total basket__text"></div>
+                    <div class="basket__checkout">
+                      <button
+                        class="basket__checkout"
+                        onclick="basket.renderCheckout(),document.querySelector('.checkout').classList.add('top'),document.querySelector('.basket').classList.remove('top')"
+                      >
+                        Checkout
+                      </button>
+                    </div>
+                  </div>
+                </section>
+              </aside>
+              <aside class="checkout">
+                <div
+                  class="close-btn"
+                  onclick="document.querySelector('.checkout').classList.remove('top')"
+                >
+                  x
+                </div>
+                <div class="checkout-section">
+                  <div class="checkout__inner">
+                    <div class="checkout__product">
+                      <div class="checkout__text flex-sb-c">
+                        <div class="checkout__product-name">
+                          <p>${product.variant} ${product.name}</p>
+                        </div>
+                        <div class="checkout__wrapper flex-sb-c">
+                          <div class="checkout__product-quantity flex-sb-c">
+                            <p><span class="checkout__text-sm">${product.quantity}</span></p>
+                          </div>
+                          <div class="checkout__product-total">
+                            <p>
+                              <span class="checkout__text-sm"
+                                >£${product.totalPrice.toFixed(2)}</span
+                              >
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="savings">
+                        <span class="checkout__text-sm">(-£${discount.toFixed(2)})</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="checkout__total"></div>
+                  <div class="checkout__total-saved"></div>
+                </div>
+              </aside>
             </li>
           </ul>
         </div>
       </div>
     </header>
+
     <main class="shop">
-      <section class="shop__inner container">
-        <div class="shop__products">
-          <!-- <div class="shop__product">
-            <div class="shop__product-image">
-              <div class="shop__add-to-basket flex-c-c" onclick="(basket.addToBasket('BGLO'))">
-                <p>ADD TO CART</p>
-                <svg viewbox="0 0 24 24" width="100" height="100">
-                  <g id="_01_align_center" data-name="01 align center">
-                    <path
-                      d="M20.164,13H5.419L4.478,5H14V3H4.242L4.2,2.648A3,3,0,0,0,1.222,0H0V2H1.222a1,1,0,0,1,.993.883L3.8,16.351A3,3,0,0,0,6.778,19H20V17H6.778a1,1,0,0,1-.993-.884L5.654,15H21.836l.9-5H20.705Z"
-                    />
-                    <circle cx="7" cy="22" r="2" />
-                    <circle cx="17" cy="22" r="2" />
-                    <polygon
-                      points="21 3 21 0 19 0 19 3 16 3 16 5 19 5 19 8 21 8 21 5 24 5 24 3 21 3"
-                    />
-                  </g>
-                </svg>
+      <section class="shop-section">
+        <div class="shop-section__inner container">
+          <div class="shop__products">
+            <!-- <div class="shop__product">
+              <div class="shop__product-image">
+                <div class="shop__add-to-basket flex-c-c" onclick="(basket.addToBasket('BGLO'))">
+                  <p>ADD TO CART</p>
+                  <svg viewbox="0 0 24 24" width="100" height="100">
+                    <g id="_01_align_center" data-name="01 align center">
+                      <path
+                        d="M20.164,13H5.419L4.478,5H14V3H4.242L4.2,2.648A3,3,0,0,0,1.222,0H0V2H1.222a1,1,0,0,1,.993.883L3.8,16.351A3,3,0,0,0,6.778,19H20V17H6.778a1,1,0,0,1-.993-.884L5.654,15H21.836l.9-5H20.705Z"
+                      />
+                      <circle cx="7" cy="22" r="2" />
+                      <circle cx="17" cy="22" r="2" />
+                      <polygon
+                        points="21 3 21 0 19 0 19 3 16 3 16 5 19 5 19 8 21 8 21 5 24 5 24 3 21 3"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <img src="./assets/images/bagel1.jpg" alt="Onion Bagel" />
               </div>
-              <img src="./assets/images/bagel1.jpg" alt="Onion Bagel" />
+              <div class="shop__product-text flex-sb">
+                <div class="shop__product-name">
+                  <p>Onion Bagel</p>
+                  <p><span class="shop__text-sm">Cream Cheese, Smoked Salmon</span></p>
+                </div>
+                <div class="shop__product-price">
+                  <p><span class="shop__text-sm">£4.99</span></p>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </section>
+      <section class="shop-section shop__deals-bg">
+        <div class="shop-section__inner container">
+          <div class="shop__deals">
+            <h2 class="shop__deals-h2">
+              Choose Your <span class="current__page-nav current__page-nav-text p-i">Deals</span>
+            </h2>
+            <div class="shop__products">
+              <div class="shop__product">
+                <h3 class="shop__deals-h3">
+                  6x Onion Bagel for
+                  <span class="current__page-nav current__page-nav-text p-i">£2.49</span>
+                </h3>
+
+                <div class="shop__product-image">
+                  <div
+                    class="shop__add-to-basket flex-c-c"
+                    onclick="(basket.addDealToBasket('BGLO'))"
+                  >
+                    <p>ADD TO CART</p>
+                    <svg viewbox="0 0 24 24" width="100" height="100">
+                      <g id="_01_align_center" data-name="01 align center">
+                        <path
+                          d="M20.164,13H5.419L4.478,5H14V3H4.242L4.2,2.648A3,3,0,0,0,1.222,0H0V2H1.222a1,1,0,0,1,.993.883L3.8,16.351A3,3,0,0,0,6.778,19H20V17H6.778a1,1,0,0,1-.993-.884L5.654,15H21.836l.9-5H20.705Z"
+                        />
+                        <circle cx="7" cy="22" r="2" />
+                        <circle cx="17" cy="22" r="2" />
+                        <polygon
+                          points="21 3 21 0 19 0 19 3 16 3 16 5 19 5 19 8 21 8 21 5 24 5 24 3 21 3"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <img src="./assets/images/BGLO.jpg" alt="Onion Bagel" />
+                </div>
+              </div>
+              <div class="shop__product">
+                <h3 class="shop__deals-h3">
+                  12x Plain Bagel for
+                  <span class="current__page-nav current__page-nav-text p-i">£3.99</span>
+                </h3>
+                <div class="shop__product-image">
+                  <div
+                    class="shop__add-to-basket flex-c-c"
+                    onclick="(basket.addDealToBasket('BGLP'))"
+                  >
+                    <p>ADD TO CART</p>
+                    <svg viewbox="0 0 24 24" width="100" height="100">
+                      <g data-name="01 align center">
+                        <path
+                          d="M20.164,13H5.419L4.478,5H14V3H4.242L4.2,2.648A3,3,0,0,0,1.222,0H0V2H1.222a1,1,0,0,1,.993.883L3.8,16.351A3,3,0,0,0,6.778,19H20V17H6.778a1,1,0,0,1-.993-.884L5.654,15H21.836l.9-5H20.705Z"
+                        />
+                        <circle cx="7" cy="22" r="2" />
+                        <circle cx="17" cy="22" r="2" />
+                        <polygon
+                          points="21 3 21 0 19 0 19 3 16 3 16 5 19 5 19 8 21 8 21 5 24 5 24 3 21 3"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <img src="./assets/images/BGLP.jpg" alt="Plain Bagel" />
+                </div>
+              </div>
+              <div class="shop__product">
+                <h3 class="shop__deals-h3">
+                  6x Everything Bagel for
+                  <span class="current__page-nav current__page-nav-text p-i">£2.49</span>
+                </h3>
+                <div class="shop__product-image">
+                  <div
+                    class="shop__add-to-basket flex-c-c"
+                    onclick="(basket.addDealToBasket('BGLE'))"
+                  >
+                    <p>ADD TO CART</p>
+                    <svg viewbox="0 0 24 24" width="100" height="100">
+                      <g data-name="01 align center">
+                        <path
+                          d="M20.164,13H5.419L4.478,5H14V3H4.242L4.2,2.648A3,3,0,0,0,1.222,0H0V2H1.222a1,1,0,0,1,.993.883L3.8,16.351A3,3,0,0,0,6.778,19H20V17H6.778a1,1,0,0,1-.993-.884L5.654,15H21.836l.9-5H20.705Z"
+                        />
+                        <circle cx="7" cy="22" r="2" />
+                        <circle cx="17" cy="22" r="2" />
+                        <polygon
+                          points="21 3 21 0 19 0 19 3 16 3 16 5 19 5 19 8 21 8 21 5 24 5 24 3 21 3"
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <img src="./assets/images/BGLE.jpg" alt="Everything Bagel" />
+                </div>
+              </div>
             </div>
-            <div class="shop__product-text flex-sb">
-              <div class="shop__product-name">
-                <p>Onion Bagel</p>
-                <p><span class="shop__text-sm">Cream Cheese, Smoked Salmon</span></p>
-              </div>
-              <div class="shop__product-price">
-                <p><span class="shop__text-sm">$4.99</span></p>
-              </div>
-            </div>
-          </div> -->
+          </div>
         </div>
       </section>
     </main>
     <script src="./scripts/inventory.js"></script>
     <script src="./scripts/menu.js"></script>
     <script src="./scripts/basket.js"></script>
-    <script src="./scripts/cart.js"></script>
   </body>
 </html>

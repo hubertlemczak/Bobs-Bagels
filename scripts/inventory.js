@@ -27,13 +27,7 @@ const inventory = [
     variant: 'Sesame',
     fillings: [],
   },
-  {
-    sku: 'COF',
-    price: 0.99,
-    name: 'Coffee',
-    variant: '',
-    fillings: [],
-  },
+
   {
     sku: 'BGSE',
     price: 2.99,
@@ -54,5 +48,12 @@ const inventory = [
     name: 'Bagel Sandwich',
     variant: 'Ham',
     fillings: ['Ham', 'Lettuce', 'Tomato', 'Cheese'],
+  },
+  {
+    sku: 'COF',
+    price: 0.99,
+    name: 'Coffee',
+    variant: '',
+    fillings: [],
   },
 ];
