@@ -39,10 +39,10 @@
               <a href="index.html" class="current__page-nav-text">Home</a>
             </li>
             <li class="header__item"><a href="">About</a></li>
-            <li class="header__item"><a href="shop.html">Shop</a></li>
+            <li class="header__item">
+              <a href="shop.html">Shop</a>
+            </li>
             <li class="header__item"><a href="">Contact</a></li>
-            <li class="header__item"><a href="">Sign In</a></li>
-            <li class="header__item"><a href="">Sign Up</a></li>
             <li class="header__item">
               <div
                 class="header__basket"
@@ -59,7 +59,7 @@
               <aside class="basket">
                 <section class="basket-section">
                   <div
-                    class="basket__close"
+                    class="close-btn"
                     onclick="document.querySelector('.basket').classList.remove('top')"
                   >
                     x
@@ -67,36 +67,152 @@
                   <div class="basket__inner">
                     <div class="basket__products">
                       <!-- <div class="basket__product">
-                          <div class="basket__product-image">
-                            <img width="100px" src="./assets/images/BGLO.jpg" alt="Onion Bagel" />
+                        <div class="basket__product-image">
+                          <img
+                            width="100px"
+                            src="./assets/images/${product.sku}.jpg"
+                            alt="${product.variant} ${
+                      product.name
+                    }"
+                          />
+                        </div>
+                        <div class="basket__text flex-sb-c">
+                          <div class="basket__product-name">
+                            <p>${product.variant} ${product.name}</p>
                           </div>
-                          <div class="basket__text flex-sb-c">
-                            <div class="basket__product-name">
-                              <p>Onion Bagel</p>
+                          <div class="basket__wrapper flex-sb-c">
+                            <div class="basket__product-quantity flex-sb-c">
+                              <div
+                                class="basket__product-quantity-decrement"
+                                onclick="basket.decrement('${
+                                product.sku
+                              }')"
+                              >
+                                <p>-</p>
+                              </div>
+                              <p><span class="basket__text-sm">${product.quantity}</span></p>
+                              <div
+                                class="basket__product-quantity-increment"
+                                onclick="basket.addToBasket('${
+                                product.sku
+                              }')"
+                              >
+                                <p>+</p>
+                              </div>
                             </div>
-                            <div class="basket__wrapper flex-sb-c">
-                              <div class="basket__product-quantity">
-                                <p><span class="basket__text-sm">2</span></p>
-                              </div>
-                              <div class="basket__product-total">
-                                <p><span class="basket__text-sm">£4.99</span></p>
-                              </div>
+                            <div class="basket__product-total">
+                              <p>
+                                <span class="basket__text-sm"
+                                  >£${product.totalPrice.toFixed(2)}</span
+                                >
+                              </p>
+                            </div>
+                            <div
+                              class="basket__product-remove"
+                              onclick="basket.removeFromBasket('${
+                              product.sku
+                            }')"
+                            >
+                              <p>X</p>
                             </div>
                           </div>
-                        </div> -->
+                        </div>
+                      </div> -->
                     </div>
-                    <div class="basket__total basket__text flex-sb-e">
-                      <div></div>
-                      <p></p>
+                    <div class="basket__total basket__text"></div>
+                    <div class="basket__checkout">
+                      <!-- <button
+                        class="basket__checkout"
+                        onclick="basket.renderCheckout(),document.querySelector('.checkout').classList.add('top'),document.querySelector('.basket').classList.remove('top')"
+                      >
+                        Checkout
+                      </button> -->
                     </div>
                   </div>
                 </section>
+              </aside>
+              <aside class="checkout">
+                <div
+                  class="close-btn"
+                  onclick="document.querySelector('.checkout').classList.remove('top')"
+                >
+                  x
+                </div>
+                <div class="checkout-section">
+                  <div class="checkout__inner">
+                    <div class="checkout__product">
+                      <div class="checkout__text flex-sb-c">
+                        <div class="checkout__product-name">
+                          <p>${product.variant} ${product.name}</p>
+                        </div>
+                        <div class="checkout__wrapper flex-sb-c">
+                          <div class="checkout__product-quantity flex-sb-c">
+                            <p><span class="checkout__text-sm">${product.quantity}</span></p>
+                          </div>
+                          <div class="checkout__product-total">
+                            <p>
+                              <span class="checkout__text-sm"
+                                >£${product.totalPrice.toFixed(2)}</span
+                              >
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="savings">
+                        <span class="checkout__text-sm">(-£${discount.toFixed(2)})</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="checkout__total"></div>
+                  <div class="checkout__total-saved"></div>
+                </div>
               </aside>
             </li>
           </ul>
         </div>
       </div>
     </header>
+    <main>
+      <section class="browse-menu">
+        <div class="browse-menu-section split-bg">
+          <div class="browse-menu__inner container flex-c-c">
+            <div class="browse-menu-left">
+              <h2>
+                CHECK OUT <br />OUR
+                <span class="box-highlight">MENU</span>
+              </h2>
+              <p>Browse all of our bagels!</p>
+              <a href="./shop.html" class="browse-menu-left-btn flex-c-c">
+                <span>PICK YOUR FAVOURITE</span>
+                <svg class="browse-menu-left-svg" width="86" viewbox="0 0 86 27.431">
+                  <path
+                    id="Icon_awesome-arrow-right"
+                    data-name="Icon awesome-arrow-right"
+                    d="M9.822,4.485,11.216,3.09a1.5,1.5,0,0,1,2.129,0L25.557,15.3a1.5,1.5,0,0,1,0,2.129L13.346,29.636a1.5,1.5,0,0,1-2.129,0L9.822,28.241a1.509,1.509,0,0,1,.025-2.155l7.569-7.211H-58.492A1.5,1.5,0,0,1-60,17.368v-2.01a1.5,1.5,0,0,1,1.508-1.508H17.416L9.847,6.639A1.5,1.5,0,0,1,9.822,4.485Z"
+                    transform="translate(60 -2.647)"
+                    fill="#FFFFFF"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="browse-menu-right flex-c-c">
+              <div class="bagel-animation-wrapper">
+                <img
+                  src="./assets/images/BGSS-transparent-bg.jpg"
+                  alt="Sesame Bagel Sandwich with Cream Cheese and Smoked Salmon"
+                  class="bagel-animation"
+                />
+              </div>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, saepe laudantium
+                assumenda earum dolorum sit architecto similique! Cumque aliquam ducimus iure
+                laboriosam ex, dolorem commodi tenetur, voluptas eius, voluptatum magni?
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="./scripts/inventory.js"></script>
     <script src="./scripts/menu.js"></script>
     <script src="./scripts/basket.js"></script>

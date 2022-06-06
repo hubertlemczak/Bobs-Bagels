@@ -146,11 +146,27 @@ class Basket {
         </div>`;
     });
     const basketTotal = document.querySelector('.basket__total');
+    const checkoutBtn = document.querySelector('.basket__checkout');
     basketTotal.innerHTML = '';
-    if (this.basket.length !== 0)
+    checkoutBtn.innerHTML = '';
+    if (this.basket.length !== 0) {
       basketTotal.innerHTML = `
     <div></div>
     <p>${basket.getBasketTotal()}</p>`;
+      checkoutBtn.innerHTML = `
+      <button
+      onclick="basket.renderCheckout(),document.querySelector('.checkout').classList.add('top'),document.querySelector('.basket').classList.remove('top')"
+      class="basket__checkout-btn flex-c-c">
+        <span>CHECKOUT</span>
+        <svg class="basket__checkout-svg" width="50" viewbox="0 0 86 27.431">
+          <path
+            d="M9.822,4.485,11.216,3.09a1.5,1.5,0,0,1,2.129,0L25.557,15.3a1.5,1.5,0,0,1,0,2.129L13.346,29.636a1.5,1.5,0,0,1-2.129,0L9.822,28.241a1.509,1.509,0,0,1,.025-2.155l7.569-7.211H-58.492A1.5,1.5,0,0,1-60,17.368v-2.01a1.5,1.5,0,0,1,1.508-1.508H17.416L9.847,6.639A1.5,1.5,0,0,1,9.822,4.485Z"
+            transform="translate(60 -2.647)"
+            fill="#FFFFFF"
+          ></path>
+        </svg>
+      </button>`;
+    }
   }
   renderCheckout() {
     const cartProducts = document.querySelector('.checkout__inner');
