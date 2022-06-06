@@ -166,6 +166,20 @@ h1 {
   background: none;
   border: none;
   cursor: pointer;
+  position: relative;
+}
+
+.header__basket-quantity {
+  position: absolute;
+  right: -15px;
+  top: -10px;
+  background-color: black;
+  color: white;
+  font-size: 0.9rem;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  text-align: center;
 }
 
 .top {

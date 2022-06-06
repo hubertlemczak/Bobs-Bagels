@@ -107,7 +107,9 @@ class Basket {
     basket.getBasketTotal();
     const cartProducts = document.querySelector('.basket__products');
     cartProducts.innerHTML = '';
+    let totalQuantity = 0;
     this.basket.forEach((product) => {
+      totalQuantity += product.quantity;
       cartProducts.innerHTML += `
         <div class="basket__product">
           <div class="basket__product-image">
@@ -147,8 +149,10 @@ class Basket {
     });
     const basketTotal = document.querySelector('.basket__total');
     const checkoutBtn = document.querySelector('.basket__checkout');
+    const basketQuantity = document.querySelector('.header__basket-q');
     basketTotal.innerHTML = '';
     checkoutBtn.innerHTML = '';
+    basketQuantity.innerHTML = '';
     if (this.basket.length !== 0) {
       basketTotal.innerHTML = `
     <div></div>
@@ -166,6 +170,7 @@ class Basket {
           ></path>
         </svg>
       </button>`;
+      basketQuantity.innerHTML = `<span class="header__basket-quantity">${totalQuantity}</span>`;
     }
   }
   renderCheckout() {
