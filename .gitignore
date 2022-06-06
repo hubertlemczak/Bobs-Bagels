@@ -1,2 +1,2 @@
-.send_sms.js
-node_modules
+./send_sms.js
+./node_modules
