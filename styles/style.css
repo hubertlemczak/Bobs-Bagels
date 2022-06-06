@@ -49,10 +49,6 @@ h6 {
   --clr-accent-orange: rgb(250, 188, 0);
 }
 
-body {
-  height: 200vh;
-}
-
 .container {
   margin: 0 auto;
   max-width: 72rem;
@@ -333,6 +329,16 @@ h1 {
   text-align: center;
 }
 
+.hero__inner {
+  position: relative;
+  min-height: 300px;
+}
+
+.hero__img {
+  position: absolute;
+  top: -20px;
+}
+
 .browse-menu {
   min-height: 600px;
   padding-top: 160px;
@@ -434,6 +440,31 @@ h1 {
   .browse-menu-left {
     margin-bottom: 110px;
   }
+}
+
+.footer-section {
+  margin-top: 50px;
+  padding-top: 50px;
+  min-height: 100px;
+  background-color: black;
+}
+
+.footer__item {
+  list-style: none;
+}
+
+.footer__item a:hover {
+  color: var(--clr-accent-orange);
+}
+
+.footer__item a {
+  color: white;
+}
+
+.cpr {
+  color: white;
+  padding: 100px 0px 20px;
+  text-align: center;
 }
 
 .shop {
