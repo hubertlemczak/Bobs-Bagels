@@ -3,30 +3,29 @@ class Basket {
     this.basket = JSON.parse(localStorage.getItem('BASKET')) || [];
   }
   addToBasket(sku) {
-    const foundItem = inventory.find((x) => x.sku === sku);
-    const basketFoundItem = this.basket.find((x) => x.sku === sku);
+    const inventoryItem = inventory.find((x) => x.sku === sku);
+    let basketFoundItem = this.basket.find((x) => x.sku === sku);
     if (!basketFoundItem) {
-      this.basket.push(foundItem);
-      foundItem.quantity = 1;
-      basket.renderBasket();
-    } else if (basketFoundItem.sku.includes(foundItem.sku)) {
+      basketFoundItem = { ...inventoryItem };
+      basketFoundItem.quantity = 1;
+      this.basket.push(basketFoundItem);
+    } else if (basketFoundItem.sku.includes(inventoryItem.sku)) {
       basketFoundItem.quantity++;
-      basket.renderBasket();
     }
+    basket.renderBasket();
   }
   addDealToBasket(sku) {
-    const foundItem = inventory.find((x) => x.sku === sku);
-    const basketFoundItem = this.basket.find((x) => x.sku === sku);
+    const inventoryItem = inventory.find((x) => x.sku === sku);
+    console.log({ ...inventoryItem });
+    let basketFoundItem = this.basket.find((x) => x.sku === sku);
     if (!basketFoundItem) {
-      this.basket.push(foundItem);
-      if (sku === 'BGLE' || sku === 'BGLO') foundItem.quantity = 6;
-      if (sku === 'BGLP') foundItem.quantity = 12;
-      basket.renderBasket();
-    } else {
-      if (sku === 'BGLE' || sku === 'BGLO') basketFoundItem.quantity += 6;
-      if (sku === 'BGLP') basketFoundItem.quantity += 12;
-      basket.renderBasket();
+      basketFoundItem = { ...inventoryItem };
+      basketFoundItem.quantity = 0;
+      this.basket.push(basketFoundItem);
     }
+    if (sku === 'BGLE' || sku === 'BGLO') basketFoundItem.quantity += 6;
+    if (sku === 'BGLP') basketFoundItem.quantity += 12;
+    basket.renderBasket();
   }
   removeFromBasket(sku) {
     this.basket = this.basket.filter((item) => item.sku !== sku);
