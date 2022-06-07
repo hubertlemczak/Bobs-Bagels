@@ -1,16 +1,10 @@
 class Basket {
   constructor() {
     this.basket = JSON.parse(localStorage.getItem('BASKET')) || [];
-    console.log(this.basket);
-    console.log('local storage', JSON.parse(localStorage.getItem('BASKET')));
   }
   addToBasket(sku) {
     const foundItem = inventory.find((x) => x.sku === sku);
     const basketFoundItem = this.basket.find((x) => x.sku === sku);
-    console.log('bfi', basketFoundItem);
-    console.log('foundItem', foundItem);
-    console.log('basket', ...this.basket);
-    // console.log(basketFoundItem.sku.includes(foundItem.sku));
     if (!basketFoundItem) {
       this.basket.push(foundItem);
       foundItem.quantity = 1;
