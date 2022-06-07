@@ -33,12 +33,10 @@ class Basket {
     basket.renderBasket();
   }
   decrement(sku) {
-    if (this.basket.find((x) => x.sku === sku).quantity === 1) basket.removeFromBasket(sku);
-    else this.basket.find((x) => x.sku === sku).quantity--;
+    const basketFoundItem = this.basket.find((x) => x.sku === sku);
+    if (basketFoundItem.quantity === 1) basket.removeFromBasket(sku);
+    else basketFoundItem.quantity--;
     basket.renderBasket();
-  }
-  getBasket() {
-    return this.basket;
   }
   getBasketTotal() {
     let total = 0;
@@ -57,16 +55,6 @@ class Basket {
       total += this.basket[i].totalPrice;
     }
     return `£${total.toFixed(2)}`;
-  }
-  getReceipt() {
-    for (let i = 0; i < this.basket.length; i++) {
-      console.log(
-        `${this.basket[i].variant} ${this.basket[i].name} ${this.basket[i].quantity} £${this.basket[
-          i
-        ].totalPrice.toFixed(2)}`
-      );
-    }
-    console.log(`Total: ${this.getBasketTotal()}`);
   }
   renderProducts() {
     const products = document.querySelector('.shop__products');
@@ -248,4 +236,3 @@ class Basket {
 }
 const basket = new Basket();
 basket.renderBasket();
-// localStorage.setItem('BASKET', JSON.stringify(this.basket));
