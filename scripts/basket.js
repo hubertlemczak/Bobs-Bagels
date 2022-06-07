@@ -1,28 +1,36 @@
 class Basket {
   constructor() {
-    this.basket = [];
+    this.basket = JSON.parse(localStorage.getItem('BASKET')) || [];
+    console.log(this.basket);
+    console.log('local storage', JSON.parse(localStorage.getItem('BASKET')));
   }
   addToBasket(sku) {
-    if (!this.basket.includes(inventory.find((x) => x.sku === sku))) {
-      this.basket.push(inventory.find((x) => x.sku === sku));
-      inventory.find((x) => x.sku === sku).quantity = 1;
+    const foundItem = inventory.find((x) => x.sku === sku);
+    const basketFoundItem = this.basket.find((x) => x.sku === sku);
+    console.log('bfi', basketFoundItem);
+    console.log('foundItem', foundItem);
+    console.log('basket', ...this.basket);
+    // console.log(basketFoundItem.sku.includes(foundItem.sku));
+    if (!basketFoundItem) {
+      this.basket.push(foundItem);
+      foundItem.quantity = 1;
       basket.renderBasket();
-    } else {
-      inventory.find((x) => x.sku === sku).quantity++;
+    } else if (basketFoundItem.sku.includes(foundItem.sku)) {
+      basketFoundItem.quantity++;
       basket.renderBasket();
     }
-
-    return this;
   }
   addDealToBasket(sku) {
-    if (!this.basket.includes(inventory.find((x) => x.sku === sku))) {
-      this.basket.push(inventory.find((x) => x.sku === sku));
-      if (sku === 'BGLE' || sku === 'BGLO') inventory.find((x) => x.sku === sku).quantity = 6;
-      if (sku === 'BGLP') inventory.find((x) => x.sku === sku).quantity = 12;
+    const foundItem = inventory.find((x) => x.sku === sku);
+    const basketFoundItem = this.basket.find((x) => x.sku === sku);
+    if (!basketFoundItem) {
+      this.basket.push(foundItem);
+      if (sku === 'BGLE' || sku === 'BGLO') foundItem.quantity = 6;
+      if (sku === 'BGLP') foundItem.quantity = 12;
       basket.renderBasket();
     } else {
-      if (sku === 'BGLE' || sku === 'BGLO') inventory.find((x) => x.sku === sku).quantity += 6;
-      if (sku === 'BGLP') inventory.find((x) => x.sku === sku).quantity += 12;
+      if (sku === 'BGLE' || sku === 'BGLO') basketFoundItem.quantity += 6;
+      if (sku === 'BGLP') basketFoundItem.quantity += 12;
       basket.renderBasket();
     }
   }
@@ -172,6 +180,7 @@ class Basket {
       </button>`;
       basketQuantity.innerHTML = `<span class="header__basket-quantity">${totalQuantity}</span>`;
     }
+    localStorage.setItem('BASKET', JSON.stringify(this.basket));
   }
   renderCheckout() {
     const cartProducts = document.querySelector('.checkout__inner');
@@ -244,6 +253,5 @@ class Basket {
   }
 }
 const basket = new Basket();
-basket.renderProducts();
 basket.renderBasket();
 // localStorage.setItem('BASKET', JSON.stringify(this.basket));
