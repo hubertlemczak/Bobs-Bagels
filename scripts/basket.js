@@ -2,6 +2,7 @@ class Basket {
   constructor() {
     this.basket = JSON.parse(localStorage.getItem('BASKET')) || [];
   }
+
   addToBasket(sku) {
     const inventoryItem = inventory.find((x) => x.sku === sku);
     let basketFoundItem = this.basket.find((x) => x.sku === sku);
@@ -14,6 +15,7 @@ class Basket {
     }
     basket.renderBasket();
   }
+
   addDealToBasket(sku) {
     const inventoryItem = inventory.find((x) => x.sku === sku);
     console.log({ ...inventoryItem });
@@ -27,16 +29,19 @@ class Basket {
     if (sku === 'BGLP') basketFoundItem.quantity += 12;
     basket.renderBasket();
   }
+
   removeFromBasket(sku) {
     this.basket = this.basket.filter((item) => item.sku !== sku);
     basket.renderBasket();
   }
+
   decrement(sku) {
     const basketFoundItem = this.basket.find((x) => x.sku === sku);
     if (basketFoundItem.quantity === 1) basket.removeFromBasket(sku);
     else basketFoundItem.quantity--;
     basket.renderBasket();
   }
+
   getBasketTotal() {
     let total = 0;
     for (let i = 0; i < this.basket.length; i++) {
@@ -55,6 +60,7 @@ class Basket {
     }
     return `£${total.toFixed(2)}`;
   }
+
   renderProducts() {
     const products = document.querySelector('.shop__products');
     inventory.forEach((product) => {
@@ -92,6 +98,7 @@ class Basket {
         </div>`;
     });
   }
+
   renderBasket() {
     basket.getBasketTotal();
     const cartProducts = document.querySelector('.basket__products');
@@ -163,6 +170,7 @@ class Basket {
     }
     localStorage.setItem('BASKET', JSON.stringify(this.basket));
   }
+
   renderCheckout() {
     const cartProducts = document.querySelector('.checkout__inner');
     cartProducts.innerHTML = '';
