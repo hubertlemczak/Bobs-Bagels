@@ -10,15 +10,12 @@ class Basket {
       basketFoundItem = { ...inventoryItem };
       basketFoundItem.quantity = 1;
       this.basket.push(basketFoundItem);
-    } else if (basketFoundItem.sku.includes(inventoryItem.sku)) {
-      basketFoundItem.quantity++;
-    }
+    } else basketFoundItem.quantity++;
     basket.renderBasket();
   }
 
   addDealToBasket(sku) {
     const inventoryItem = inventory.find((x) => x.sku === sku);
-    console.log({ ...inventoryItem });
     let basketFoundItem = this.basket.find((x) => x.sku === sku);
     if (!basketFoundItem) {
       basketFoundItem = { ...inventoryItem };
